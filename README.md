@@ -1,7 +1,7 @@
 # rl-intro-book-chinese
 《Reinforcement Learning- An Introduction》第二版中文翻译，各个章节对应的翻译者:
 
-- 第1、6章由lucas负责
+- 第1、6章由@lucasliunju负责
 - 第2章由@subaruclover负责 
 - 第3章由@anuoeattoomuch负责
 - 第4章以及16.3小节由@xiaogengyaokeyan负责
