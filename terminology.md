@@ -6,9 +6,9 @@ bootstrap [bootstrap]
 
 agent [智能体]
 
-off-policy [异策略]
+off-policy [离策略]
 
-on-policy  [同策略]
+on-policy  [在策略]
 
 one-step  [一步、一步更新]根据语境选择
 
