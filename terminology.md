@@ -5,3 +5,7 @@ push格式 key[value] ,示例: reinforcement learning [强化学习]
 bootstrap [bootstrap]
 
 agent [智能体]
+
+off-policy [异策略]
+
+on-policy  [同策略]
