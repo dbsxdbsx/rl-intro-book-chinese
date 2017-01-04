@@ -13,3 +13,9 @@ on-policy  [在策略]
 one-step  [一步、一步更新]根据语境选择
 
 n-step  [n步、n步更新]根据语境选择
+
+multi-step [多步]
+
+greedy [贪婪策略]
+
+e-greedy  [e-greedy]
