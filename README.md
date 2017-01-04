@@ -8,7 +8,8 @@
 - 第5章由@quq99 负责
 - 第7、8章由@x39826负责
 - 第9章由@dbsxdbsx负责
-- 第10、11章由@ghx0x0负责
+- 第10章由@imagef负责
+- 第11章由@ghx0x0负责
 - 第12章由@bigiceberg负责
 - 第13章由@xiaoiker负责
 - 第14章以及15.1-15.4小节由@lemonowang负责
