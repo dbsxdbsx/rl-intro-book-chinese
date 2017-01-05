@@ -20,6 +20,10 @@ greedy [贪婪策略]
 
 e-greedy  [e-greedy]
 
+reward  [奖励]
+
+return  [回报]
+
 bandit problem []
 
 stationary/nonstationary []
