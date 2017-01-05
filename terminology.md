@@ -19,3 +19,15 @@ multi-step [多步]
 greedy [贪婪策略]
 
 e-greedy  [e-greedy]
+
+bandit problem []
+
+stationary/nonstationary []
+
+episode []
+
+episodic tasks []
+
+general policy iteration(GPI) []
+
+prediction/control []
