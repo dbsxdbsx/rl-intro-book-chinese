@@ -24,14 +24,14 @@ reward  [奖励]
 
 return  [回报]
 
-bandit problem []
+bandit problem [赌博机问题]
 
-stationary/nonstationary []
+stationary/nonstationary [平稳/非平稳]
 
-episode []
+episode [一个片段]
 
-episodic tasks []
+episodic tasks [情节任务]
 
-general policy iteration(GPI) []
+general policy iteration(GPI) [广义策略迭代]
 
-prediction/control []
+prediction/control [预测控制]
