@@ -20,14 +20,18 @@ greedy [贪婪策略]
 
 e-greedy  [e-greedy]
 
-bandit problem []
+reward  [奖励]
 
-stationary/nonstationary []
+return  [回报]
 
-episode []
+bandit problem [赌博机问题]
 
-episodic tasks []
+stationary/nonstationary [平稳/非平稳]
 
-general policy iteration(GPI) []
+episode [一个片段]
 
-prediction/control []
+episodic tasks [情节任务]
+
+general policy iteration(GPI) [广义策略迭代]
+
+prediction/control [预测控制]

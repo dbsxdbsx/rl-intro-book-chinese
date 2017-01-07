@@ -1,0 +1,1 @@
+- 公式居中问题,参照 https://github.com/typora/typora-issues/issues/178
