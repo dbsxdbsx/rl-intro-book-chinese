@@ -1,6 +1,7 @@
 ###术语维护列表，旨在提高术语翻译的一致性与准确性
 push格式 key[value]comments(可选),示例: reinforcement learning [强化学习]
 
+state(s) [状态(集)]
 
 bootstrap [bootstrap]
 
@@ -36,4 +37,4 @@ general policy iteration(GPI) [广义策略迭代]
 
 prediction/control [预测控制]
 
-Monte Carlo[蒙特卡罗]网上看到另一个常见翻译是蒙特卡洛，后期需要统一中文翻译
+Monte Carlo [蒙特卡罗]网上看到另一个常见翻译是蒙特卡洛，后期需要统一中文翻译
