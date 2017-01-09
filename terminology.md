@@ -35,3 +35,7 @@ episodic tasks [情节任务]
 general policy iteration(GPI) [广义策略迭代]
 
 prediction/control [预测控制]
+
+first/every visit MC method []
+
+eligibility traces []
