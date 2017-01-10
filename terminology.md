@@ -38,3 +38,9 @@ general policy iteration(GPI) [广义策略迭代]
 prediction/control [预测控制]
 
 Monte Carlo [蒙特卡罗]网上看到另一个常见翻译是蒙特卡洛，后期需要统一中文翻译
+
+actor [执行器]
+
+critic [评价器]
+
+actor-critic [执行-评价]
