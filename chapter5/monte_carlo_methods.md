@@ -26,10 +26,10 @@
 
   具体来看，假设我们想要估计$v_{\pi}({s})$的值。这个记号表示遵循策略$\pi$的情况下，状态$s$的价值。我们已经得到了一些回合（episodes），它们都遵循策略$\pi$并且都出现了状态$s$。每当一个回合（episode）中出现状态$s$，我们就说这是对状态$s$的一次*访问（visit）*。当然了，在一个中状态$s$可能被访问（visit）多次。我们称第一次为*首次访问（first visit）*。所以呢我们有两种蒙特卡罗方法（Monte Carlo methods），一种只计算所有回合中首次访问状态$s$的平均回报（return），以此作为$v_\pi(s)$的估计值，我们称之为*first visit MC方法*；与之对应的，另一种方法计算所有回合中每次访问状态$s$的平均回报（return），我们称之为*every visit MC方法*。上述的两种方法很相似，但是具有细微不同的理论特性。第一种方法（指 first-visit MC）被广泛研究可追溯到十九世纪四十年代，所以我们这一章主要关注这种方法。至于第二种方法呢，我们将在第九章和第十二章分别作为函数近似（function approximation）和资格迹（eligibility traces）的扩展。first visit MC方法如下所示。
 
-> ---
->
-> First-visit MC 策略评估（回报$$V \approx v_\pi$$）
->
+---
+
+First-visit MC 策略评估（回报$$V \approx v_\pi$$）
+
 > ---
 >
 > 初始化：
@@ -150,24 +150,28 @@
 
   首先，我们考虑经典的策略迭代的蒙特卡洛（MC）版本。这里，我们交替执行策略迭代和策略提升的完整步骤。从一个随机的策略$\pi_0$开始，以最优策略和最优的动作-价值函数结束：
 
-$$\pi_0 \overset{E}{\rightarrow} q_{\pi_0} \overset{I}{\rightarrow} \pi_1 \overset{E}{\rightarrow} q_{\pi_1} \overset{I}{\rightarrow} \pi_2 \overset{E}{\rightarrow} ... \overset{I}{\rightarrow} \pi_{*} \overset{E}{\rightarrow} q_{*} $$
-
+$$
+\pi_0 \overset{E}{\rightarrow} q_{\pi_0} \overset{I}{\rightarrow} \pi_1 \overset{E}{\rightarrow} q_{\pi_1} \overset{I}{\rightarrow} \pi_2 \overset{E}{\rightarrow} \cdots \overset{I}{\rightarrow} \pi_{*} \overset{E}{\rightarrow} q_{*}
+$$
 其中，$\overset{E}{\rightarrow}$表示一个完整的策略评估，$\overset{I}{\rightarrow}$表示一个完整的策略提升。策略评估的做法上一节已经说明。随着我们经历越来越多的回合，近似的动作-价值函数渐进地趋近于真实的动作-价值函数。此时，我们假设观察到了无限的回合，而且这些回合都是以探索开端（exploring starts）的方式生成的。在上述假设下，蒙特卡洛方法会精确地计算每个$q_{\pi_k}$，对应于随机策略$\pi_k$。
 
   策略提升的方法是，对于当前的价值函数，使策略贪婪（greedy）。这种情况下，我们有*动作-价值（action-value）*函数，因此不需要模型来构建贪婪策略。对于任何的动作-价值（action-value）函数$q$，它对应的贪婪策略是：对每个$s \in S$，选择使动作-价值（action-value）函数最大的那个动作：
 
-$$\pi(s) \dot{=} arg \space \underset{a}{max} \space q(s,a)$$
 
+$$
+\pi(s) \dot{=} arg \space \underset{a}{max} \space q(s,a)
+\tag{5.1}
+$$
 之后我们可以做策略提升，我们构建每个$\pi_{k+1}$为$q_{\pi_k}$的贪婪策略。策略提升理论（见4.2节）可以应用到$\pi_k$和$\pi_{k+1}$上，因为对于所有$s \in S$，
 
-$$q_{\pi_k}(s, \pi_{k+1}(s)) = q_{\pi_k}(s, arg \space \underset{a}{max} \space q_{\pi_k}(s))$$
-
-​			$$= \underset{a}{max} \space q_{\pi_k}(s, a)$$
-
-​			$$\geq q_{\pi_k}(s, \pi_k(s))$$
-
-​			$$\geq v_{\pi_k}(s)$$.
-
+$$
+\begin{eqnarray}
+q_{\pi_k}(s, \pi{k+1}(s)) &=& q_{\pi_k}(s, arg \space \underset{a}{max} \space q_{\pi_k}(s))\\
+ &= &\underset{a}{max} \space q_{\pi_k}(s, a)\\
+ &\geq& q_{\pi_k}(s, \pi_k(s))\\
+ &\geq& v_{\pi_k}(s).\\
+ \end{eqnarray}
+$$
 正如我们上一章说阐述的，这个理论保证了每个$\pi_{k+1}$都一致地比$\pi_k$好，或者和$\pi_k$一样好。后者，我们能得到两个最优策略。这个理论保证了整个过程会收敛到最优的策略和价值函数。通过这种方法我们能在不知道环境动态（不知道转移函数）的情况下，仅靠样本回合（使用蒙特卡洛（MC）方法）来找到最优策略。
 
   我们做出了两个不太可能的假设，以保证蒙特卡洛（MC）方法能够收敛。第一个是，回合都是探索开端（exploring starts）的方式；第二个是，我们有无限个回合供策略评估使用。为了得到一个可实践的算法，我们将不得不删除这两个假设。我们将在这一章的稍后部分考虑怎么删除第一个假设。
@@ -237,6 +241,99 @@ $$q_{\pi_k}(s, \pi_{k+1}(s)) = q_{\pi_k}(s, arg \space \underset{a}{max} \space 
 
 
 ## 5.4 非探索开端的蒙特卡洛控制
+
+  如何摆脱这个在实践中不太可能发生的探索开端的假设呢？保证无限次后所有的动作都能被选到的惟一的通用办法是让智能体能够持续地选择它们。具体来讲有两种方法，我们称之为*在策略（on-policy）*方法和*离策略（off-policy）*方法。在策略方法尝试去估计和提升我们用作决策的那个策略；而离策略估计和提升的策略与用来生成数据的策略不同。我们上一节所用到的Monte Carlo ES方法就是一种在策略方法。在这一节里，我们还将学习如何设计不用探索开端假设的在策略蒙特卡洛控制（on-policy Monte Carlo control）算法。离策略方法将在下一节说明。
+
+  我们的在策略控制方法是*软的（soft）*，即是说所有的$s \in S$和$a \in A(s)$，$\pi(a|s) > 0$，但是会逐渐地接近于确定性的最优策略。许多第二章谈论的方法都可以提供这种机制。这一节我们使用*$\epsilon -$贪心（$\epsilon - greedy$）*策略，即大多数时间选择有最大的动作价值的动作，但是有$\epsilon$的概率选择随机的动作。也就是说，对所有非贪心的动作，选择它的概率是$\frac{\epsilon}{|A(s)|}$，选择贪心的动作的概率是$1 - \epsilon + \frac{\epsilon}{|A(s)|}$。$\epsilon -$贪心是$\epsilon - soft$策略的一个例子，在$\epsilon - soft$中，对所有的状态和动作，有$\pi(a|s) \geq \frac{\epsilon}{|A(s)|}$。在$\epsilon - soft$中，$\epsilon -$贪心策略是最接近贪心的。
+
+  在策略蒙特卡洛控制的思想仍然是广义策略迭代（GPI）。和Monte Carlo ES一样，我们使用first-visit蒙特卡洛方法来估计当前策略的动作-价值函数。由于没有探索开端这个假设，我们不能简单地对当前价值函数使用贪心，来提升当前的策略，因为那样会影响我们在未来对非贪心动作的探索。幸运的是，广义策略迭代（GPI）并不需要我们的策略一直保持贪心，只是要求不断向贪心策略*靠近（toward）*。我们的在策略方法会不断的趋向于贪心策略。对任意的$\epsilon - soft$策略$\pi$，$q_\pi$对应的任意的$\epsilon - $贪心策略都不坏于策略$\pi$。完整的算法如下。
+
+---
+
+在策略first-visit蒙特卡洛控制（对于$\epsilon - soft$策略）
+
+---
+
+初始化，对所有的$s \in S, a \in A(s)$：
+
+​	$Q(s,a) \leftarrow $ 随机值
+
+​	$Returns(s,a) \leftarrow$ 空表
+
+​	$\pi(a|s) \leftarrow$ 一个随机的$\epsilon - soft$策略
+
+
+
+一直循环：
+
+​	（a）使用策略$\pi$生成一个回合
+
+​	（b）对回合中出现的每个$s,a$对：
+
+​			$G \leftarrow$ 回报（遵循$s,a$对的首次出现原则）
+
+​			将$G$添加到表$Returns(s,a)$中
+
+​			$Q(s, a) \leftarrow average(Returns(s ,a))$
+
+​	（c）对回合中的每个$s$：
+
+​			$A^* \leftarrow arg \space \underset{a}{max} \space Q(s,a)$
+
+​			对所有的$a \in A(s)$：
+
+
+$$
+\pi(a|s) \leftarrow \left\{
+\begin{array}{rcl}
+1 - \epsilon + \frac{\epsilon}{|A(s)|} & & if &a=A^* \\
+\frac{\epsilon}{|A(s)|} & & if &a \neq A^*
+\end{array}
+\right.
+$$
+
+---
+
+  由于策略提升理论的保证，$q_\pi$对应的任意的$\epsilon - $贪心策略都较$\epsilon - soft$策略$\pi$有所提高。设$\pi'$为$\epsilon - $贪心策略。策略提升理论能够应用在这里，因为对所有$s \in S$:
+$$
+\begin{eqnarray}
+q_\pi{(s, \pi^{'}(s))} &=& \sum_a \pi^{'}(a|s)q_\pi{(s,a)}\\
+&=& \frac{\epsilon}{|A(s)|}\sum_a q_\pi{(s,a)} + (1-\epsilon)\space  \underset{a}{max}\space q_\pi{(s,a)}\tag{5.2}\\
+&\geq& \frac{\epsilon}{|A(s)|}\sum_a q_\pi{(s,a)} + (1-\epsilon)\sum_a \frac{\pi(a|s)-\frac{\epsilon}{|A(s)|}}{1-\epsilon}q_\pi(s,a) \\
+\end{eqnarray}
+$$
+（和为1的非负权值的加权平均，所以它必须小于等于最大数的求和）
+$$
+\begin{eqnarray}
+&=& \frac{\epsilon}{|A(s)|}\sum_a q_\pi{(s,a)} - \frac{\epsilon}{|A(s)|}\sum_a q_\pi{(s,a)} + \sum_a \pi(a|s)q_\pi{(s,a)}\\
+&=&v_\pi{(s)}.\\
+\end{eqnarray}
+$$
+所以，由策略提升理论，$\pi^{'} \geq \pi \space(i.e., v_\pi{'}{(s)} \geq v_\pi{(s)}, 对所有s \in S)$。我们现在证明等号只能在$\pi^{'}$和$\pi$均为最优策略时才能取到，即它们比任何其他$\epsilon - soft$策略要好。
+
+  考虑一个除了策略是$\epsilon - soft$移动到环境内部，其他和原来环境恰好相同的新环境。这个新环境有相同的状态和动作集，行为也和之前一样。如果在状态$s$，做出动作$a$，那么有$1 - \epsilon$的可能性新环境和旧环境表现一样，有$\epsilon$的可能性会随机的以等可能性在所有动作里重新选择一个动作，再次重复之前的动作（即对于这个新的动作，有$1-\epsilon$可能性与旧环境一样，$\epsilon$可能性重新随机选动作）。在新环境中能够做的最好的情况与旧环境相同。让$\tilde{v}_*$和$\tilde{q}_*$表示新环境的最优的价值函数。策略$\pi$是最优的，当且仅当$v_\pi = \tilde{v}_*$。从$\tilde{v}_*$的定义我们知道它是下式的唯一解
+$$
+\begin{eqnarray}
+\tilde{v}_*(s)  &=& (1-\epsilon) \space \underset{a}{max} \space \tilde{q}_*(s,a) + 
+\frac{\epsilon}{|A(s)|}\sum_a \tilde{q}_*(s,a)\\
+&=& (1-\epsilon) \space \underset{a}{max} \space \sum_{s^{'}, r} p(s^{'},r|s,a)[r+\gamma\tilde{v}_*(s^{'})] \\ 
+& & + \frac{\epsilon}{|A(s)|}\sum_a \sum_{s^{'}, r} p(s^{'},r|s,a)[r+\gamma\tilde{v}_*(s^{'})]
+\end{eqnarray}
+$$
+当$\epsilon - soft$策略$\pi$没有提升时，取等号。我们还知道，由（5.2）式，
+$$
+\begin{eqnarray}
+v_\pi(s) &=& (1-\epsilon) \space \underset{a}{max} \space q_\pi(s,a) + 
+\frac{\epsilon}{|A(s)|}\sum_a q_\pi(s,a)\\
+&=& (1-\epsilon) \space \underset{a}{max} \space \sum_{s^{'}, r} p(s^{'},r|s,a)[r+\gamma v_\pi(s^{'})] \\ 
+& & + \frac{\epsilon}{|A(s)|}\sum_a \sum_{s^{'}, r} p(s^{'},r|s,a)[r+\gamma v_\pi(s^{'})]
+\end{eqnarray}
+$$
+这个方程与上面的方程相比，除了把$\tilde{v}_*$换成了$v_\pi$，其他的都相同。由于$\tilde{v}_*$是唯一的，所以必须是$v_\pi = \tilde{v}_*$。
+
+  其实，我们在前几页已经说明了策略迭代适用于$\epsilon - soft$策略。对$\epsilon - soft$策略使用贪心策略，我们能够保证每一步都有提升，直到我们找到最优的策略为止。虽然这个分析独立于动作-价值函数的确定，但是它假设策略和价值都能精确计算。这使我们上一节大概相同。现在我们只通过$\epsilon - soft$策略得到最优策略，但是另一方面，我们移除了探索开端（exploring starts）的假设。
+
+​	
 
 
 
