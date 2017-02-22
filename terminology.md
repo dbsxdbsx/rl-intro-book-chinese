@@ -21,7 +21,7 @@ greedy [贪婪策略]
 
 e-greedy  [e-greedy]
 
-reward  [奖励]
+reward  [奖励、回馈] 参考了知乎上某个翻译，觉得回馈比奖励更好，因为回馈更加强调短期的反馈。
 
 return  [回报]
 
