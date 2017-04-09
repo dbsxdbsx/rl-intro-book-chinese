@@ -49,4 +49,18 @@ first/every visit MC method [first/every visit MC 方法]first-visit MC, every-v
 
 eligibility traces [资格迹]
 
+pole-balancing [平衡木]  某经典RL任务
 
+time step [时步]
+
+estimated value function [估值函数]
+
+value prediction [估值预测]
+
+function approximation method  [函数拟合法]
+
+The Prediction Objective [预测指标]
+
+asymptotic performance [渐近性能]
+ 
+Coarse Coding [稀疏编码]不知道coarse coding 是不是sparse coding的同义词?
