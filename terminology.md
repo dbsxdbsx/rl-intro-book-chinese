@@ -63,4 +63,6 @@ The Prediction Objective [预测指标]
 
 asymptotic performance [渐近性能]
  
-Coarse Coding [稀疏编码]不知道coarse coding 是不是sparse coding的同义词?
+Coarse Coding [稀疏编码]不知道coarse coding 是不是sparse coding的同义词? 
+ 
+receptive field [感受野]
