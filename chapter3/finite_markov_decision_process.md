@@ -12,7 +12,9 @@
 
 ---
 
-​                                ![pic3.1](pic3.1.jpg)     
+​                       
+
+![pic3.1](D:\trans\rl-intro-book-chinese\chapter3\img\pic3.1.jpg)
 
 ######                                                                                                                                                      图3.1：强化学习中智能体与环境交互图 
 
@@ -107,7 +109,7 @@ $ G_{t} \doteq R_{t+1} +  \gamma R_{t+2} + \gamma ^ 2 R_{t+3}+...=  \sum_{k=0}^\
 
 ---
 
-![figure3.2](D:\trans\rl-intro-book-chinese\chapter3\figure3.2.png)
+![figure3.2](D:\trans\rl-intro-book-chinese\chapter3\img\figure3.2.png)
 
 ######                                                                                                                                        图3.2：杆平衡任务。
 
@@ -127,7 +129,7 @@ $ G_{t} \doteq R_{t+1} +  \gamma R_{t+2} + \gamma ^ 2 R_{t+3}+...=  \sum_{k=0}^\
 
 ​        我们需要另外一个约定来定义一个涵盖情节和连续性任务的单一符号。在一例（3.1）中，我们将返回归结于有限数量的步数的总和，另一个是无限数量的总和（3.2）。这些可以通过考虑情节终止来进行统一，这是一个特殊的吸收状态的转换，只转换到自己，只产生零的奖励。 例如，考虑状态转换图
 
-![state transition diagram](D:\trans\rl-intro-book-chinese\chapter3\state transition diagram.png)
+![state transition diagram](D:\trans\rl-intro-book-chinese\chapter3\img\state transition diagram.png)
 
 这里的实心方块表示与情节结束对应的特殊吸收状态。从$S_{0}$开始，我们得到奖励序列+1，+1，+1，0，0，0，......总结这些，我们得到相同的返回值，无论我们是否相加第一个*T*奖励（这里*T* = 3）或以上整个无限序列。即使我们引入折扣，这仍然是成立的。因此，我们可以根据（3.2）来定义回报，按照省略不必要情节编号的惯例，并且包括如果总和仍然被定义为$\gamma = 1$的可能性（例如，所有情节终止 ）。 或者，我们也可以写回报如下
 
