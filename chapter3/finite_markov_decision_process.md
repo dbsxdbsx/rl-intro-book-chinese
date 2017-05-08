@@ -253,5 +253,24 @@ $v_\pi(s)\doteq \mathbb{E}_\pi[G_t|S_t=s]=\mathbb{E}_\pi[\sum^{\infty}_{k=0} \ga
 
 ---
 
-p81
+​     类似地，我们定义在状态$s$下采取动作$a$的值，在策略$\pi$下表示为$q_\pi(s,a) $，作为从$s$开始的预期回报，采取行动$a$，此后遵循策略$\pi$：
 
+​      $q_\pi(s,a)\doteq\mathbb{E}_\pi[G_t|S_t=s,A_t=a]=\mathbb{E}_\pi[\sum^{\infty}_{k=0}\gamma^kR_{t+k+1}|S_t=s,A_t=a]$ .                      （3.11）
+
+我们称$q_\pi$为策略$\pi$的动作值函数。
+
+​      值函数$v_\pi$和$q_\pi$可以从经验中估计。 例如，如果一个智能体遵循策略pi并且维护一个平均值，对于遇到的每个状态，跟随该状态的实际返回的平均值将会收敛到状态的值$v_\pi(s)$，作为遇到的状态的次数接近无穷大。如果在一个状态下为每个动作保持单独的平均值，那么这些平均值将类似地收敛到动作值$q_\pi(s, a)$。我们称这种*蒙特卡罗方法*的估计方法，因为它们涉及对实际收益的许多随机样本进行平均。这些方法在第5章中介绍。当然，如果状态非常多，那么单独保持每个状态的单独平均值可能是不实际的。相反，智能体将必须维护$v_\pi$和$q_\pi$作为参数化函数（参数少于状态），并调整参数以更好地匹配观察到的返回值。这也可以产生准确的估计，尽管这取决于参数化函数近似的性质。 这些可能性将在本书的第二部分讨论。
+
+​     整个强化学习和动态规划中使用的价值函数的基本属性是满足特定的递归关系。 对于任何策略$\pi$和任何状态$s$，$s$的值与其可能的后继状态的值之间保持以下一致性条件：
+
+$v_\pi(s)\doteq\mathbb{E}_\pi[G_t|S_t=s]\\ \quad\quad=\mathbb{E}_\pi[\sum^{\infty}_{k=0}\gamma^kR_{t+k+1}|S_t=s] \\\quad\quad=   \mathbb{E}_\pi[R_{t+1}+\gamma\sum^{\infty}_{k=0}\gamma^kR_{t+k+2}|S_t=s]\\\quad\quad=\sum_a\pi(a|s)\sum_{s^\prime}\sum_rp(s^\prime,r|s,a)[r+\gamma\mathbb{E}[\sum^{\infty}_{k=0}\gamma^kR_{t+k+2}|S_{t+1}=s^\prime]]\\\quad\quad=\sum_a\pi(a|s)\sum_{s^\prime,r}p(s^\prime,r|s,a)[r+\gamma v_\pi(s^\prime)], \forall s\in\mathcal{S}$                 （3.12）
+
+其中隐含的动作$a$取自集合$\mathcal{A}(s)$，下一个状态$s^\prime$取自集合$\mathcal{S}$（或在情节问题的情况下来自$\mathcal{S}+$），而奖励$r$ ，取自集合$\mathcal{R}$。注意，在最后一个方程中，我们合并了两个和，一个是所有的$s^\prime$值的和，另一个所有$r$值的和，
+
+---
+
+![figure3.4](D:\trans\rl-intro-book-chinese\chapter3\img\figure3.4.png)
+
+​                                                           图3.4：$v_\pi$和$q_\pi$的备份图。  
+
+P82  图下
