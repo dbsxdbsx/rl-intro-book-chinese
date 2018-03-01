@@ -1,11 +1,11 @@
 # rl-intro-book-chinese
-​	本项目为《Reinforcement Learning- An Introduction》第二版中文翻译，旨在帮助喜欢强化学习（Reinforcement Learning）的各位能更好的学习交流RL。
+​        本项目为《Reinforcement Learning- An Introduction》第二版中文翻译，旨在帮助喜欢强化学习（Reinforcement Learning）的各位能更好的学习交流RL。
 
-​	目前第2版原版已更新到complete draft,即第2版的第2份草稿，应该算是定稿了，[点我下载](http://incompleteideas.net/book/bookdraft2017nov5.pdf)。
+​        目前第2版原版已更新到complete draft,即第2版的第2份草稿，应该算是定稿了，[点我下载](http://incompleteideas.net/book/bookdraft2017nov5.pdf)。
 
 ​	目前本项目已公开，由于各位小伙伴也是志愿贡献。部分章节并未如期完成，再次说声抱歉~ 也欢迎各位爱好者查阅和参与翻译~ 
 
-###各个章节对应的翻译者（初期）
+### 各个章节对应的翻译者（初期）
 
 - 第1、6章由@lucasliunju负责
 - 第2章由@subaruclover负责 
