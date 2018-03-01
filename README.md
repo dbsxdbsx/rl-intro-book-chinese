@@ -1,7 +1,9 @@
 # rl-intro-book-chinese
-​	本项目为《Reinforcement Learning- An Introduction》第二版中文翻译，目前第2版原版已更新到complete draft,点我下载。旨在帮助喜欢强化学习（Reinforcement Learning）的各位能更好的学习交流RL。
+​	本项目为《Reinforcement Learning- An Introduction》第二版中文翻译，旨在帮助喜欢强化学习（Reinforcement Learning）的各位能更好的学习交流RL。
 
-​	目前本项目已公开，也欢迎各位爱好者查阅和参与翻译~ 
+​	目前第2版原版已更新到complete draft,即第2版的第2份草稿，应该算是定稿了，[点我下载](http://incompleteideas.net/book/bookdraft2017nov5.pdf)。
+
+​	目前本项目已公开，由于各位小伙伴也是志愿贡献。部分章节并未如期完成，再次说声抱歉~ 也欢迎各位爱好者查阅和参与翻译~ 
 
 ###各个章节对应的翻译者（初期）
 
@@ -33,9 +35,15 @@
 
 
 
-### 公式问题
+### Markdown编辑问题
 
-统一使用typora编辑和查看。
+​	推荐统一使用typora来编辑和查看。其他问题请常用参阅：
 
-公式居中问题,参照 https://github.com/typora/typora-issues/issues/178
+[typora公式居中问题]( https://github.com/typora/typora-issues/issues/178)
+
+[MARKDOWN手写识别](http://detexify.kirelabs.org/classify.html)
+
+[MARKDOWN公式整理](https://www.zybuluo.com/codeep/note/163962)
+
+
 
