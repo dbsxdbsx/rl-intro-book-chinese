@@ -14,7 +14,7 @@
 
 ​                       
 
-![pic3.1](D:\trans\rl-intro-book-chinese\chapter3\img\pic3.1.jpg)
+![pic3.1](.\img\pic3.1.jpg)
 
 ######                                                                                                                                                      图3.1：强化学习中智能体与环境交互图 
 
