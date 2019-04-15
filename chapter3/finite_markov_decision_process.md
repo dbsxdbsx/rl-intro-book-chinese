@@ -109,7 +109,7 @@ $ G_{t} \doteq R_{t+1} +  \gamma R_{t+2} + \gamma ^ 2 R_{t+3}+...=  \sum_{k=0}^\
 
 ---
 
-![figure3.2](D:\trans\rl-intro-book-chinese\chapter3\img\figure3.2.png)
+![figure3.2](.\img\figure3.2.png)
 
 ######                                                                                                                                        图3.2：杆平衡任务。
 
@@ -129,7 +129,7 @@ $ G_{t} \doteq R_{t+1} +  \gamma R_{t+2} + \gamma ^ 2 R_{t+3}+...=  \sum_{k=0}^\
 
 ​        我们需要另外一个约定来定义一个涵盖情节和连续性任务的单一符号。在一例（3.1）中，我们将返回归结于有限数量的步数的总和，另一个是无限数量的总和（3.2）。这些可以通过考虑情节终止来进行统一，这是一个特殊的吸收状态的转换，只转换到自己，只产生零的奖励。 例如，考虑状态转换图
 
-![state transition diagram](D:\trans\rl-intro-book-chinese\chapter3\img\state transition diagram.png)
+![state transition diagram](img\state transition diagram.png)
 
 这里的实心方块表示与情节结束对应的特殊吸收状态。从$S_{0}$开始，我们得到奖励序列+1，+1，+1，0，0，0，......总结这些，我们得到相同的返回值，无论我们是否相加第一个*T*奖励（这里*T* = 3）或以上整个无限序列。即使我们引入折扣，这仍然是成立的。因此，我们可以根据（3.2）来定义回报，按照省略不必要情节编号的惯例，并且包括如果总和仍然被定义为$\gamma = 1$的可能性（例如，所有情节终止 ）。 或者，我们也可以写回报如下
 
@@ -227,7 +227,7 @@ $\mathcal{A}(low)\doteq \{search,wait,recharge\}$
 
 ​        如果电量高，则可以完整的完成主动搜索的过程，而不会有耗尽电池的风险。以高电量开始的搜索周期以$\alpha$的概率保持高电量，并以$1-\alpha$的概率降低到低电量。另一方面，当在电量低时进行的搜索时，以$\beta$概率保持在低电量，并以$1-\beta$的概率消耗电池电量。在后一种情况下，机器人必须被救援，然后把电池再充电回到高电量。机器人收集的每一个空罐都可以作为一个单位奖励，而当机器人必须得到救援时，得到-3的奖励值。研究等待，研究>等待，分别表示机器人在搜索和等待期间将收集的罐的预期数量（因此预期的奖励）。使用$r_{search}$和$r_{wait}$,以及$r_{search}>r_{wait}$ ，分别表示机器人在搜索和等待期间将收集的罐的预期数量（因此预期的报酬）。最后，为了方便，假设在运行回去充电时不能收集空罐，并且在电池耗尽的一步中也不能收集空罐。这个系统就是一个有限的**MDP**，我们可以写出它的转移概率和预期的回报，如表3.1所示。
 
-​                       ![Table3.1](D:\trans\rl-intro-book-chinese\chapter3\img\Table3.1.png)   
+​                       ![Table3.1](img\Table3.1.png)   
 
 **表3.1**：环保机器人示例的有限**MDP**的转换概率和预期回报。每行分别是：当前状态，$s$ ，下一状态，$s^\prime$ ，和当前状态中可能的动作$a\in\mathcal{A} (s)$。
 
@@ -235,7 +235,7 @@ $\mathcal{A}(low)\doteq \{search,wait,recharge\}$
 
 ---
 
-![Figure3.3](D:\trans\rl-intro-book-chinese\chapter3\img\Figure3.3.png)
+![Figure3.3](img\Figure3.3.png)
 
 ​                                               图3.3：环保机器人示例的转换图
 
@@ -269,7 +269,7 @@ $v_\pi(s)\doteq\mathbb{E}_\pi[G_t|S_t=s]\\ \quad\quad=\mathbb{E}_\pi[\sum^{\inft
 
 ---
 
-![figure3.4](D:\trans\rl-intro-book-chinese\chapter3\img\figure3.4.png)
+![figure3.4](img\figure3.4.png)
 
 ​                                                           图3.4：$v_\pi$和$q_\pi$的备份图。  
 
@@ -283,7 +283,7 @@ $v_\pi(s)\doteq\mathbb{E}_\pi[G_t|S_t=s]\\ \quad\quad=\mathbb{E}_\pi[\sum^{\inft
 
 ---
 
-![Figure3.5](D:\trans\rl-intro-book-chinese\chapter3\img\Figure3.5.png)
+![Figure3.5](img\Figure3.5.png)
 
 ​                    图3.5：网格世界的例子：等权随机政策的特殊奖励动态（左）和状态值函数（右）。
 
@@ -293,7 +293,7 @@ $v_\pi(s)\doteq\mathbb{E}_\pi[G_t|S_t=s]\\ \quad\quad=\mathbb{E}_\pi[\sum^{\inft
 
  **示例3.9：高尔夫**  为了将打高尔夫球作为强化学习任务，我们将每次击球的惩罚（负回报）计算为$-1$，直到我们将球打入洞中。状态是球的位置。一个状态的值是从该位置到该洞的击球数量的负数。我们的动作是我们如何瞄准和摆球，当然还有我们选择的球杆。 让我们把前者视为给定的，只考虑球杆的选择，我们假设是推杆或打出去。图3.6的上半部分显示了总是使用推杆的策略的可能的状态值函数$v_{putt}(s)$。最终入洞作为终端状态值为$0$。从果岭（球道的尽头）的任何地方，我们假设我们可以做一个推杆；这状态的值为$-1$。离开果岭，我们不能通过推杆入洞，值越大。如果我们可以通过推杆达到果岭状态，那么该状态必须具有比果岭小的值，即$-2$。为了简单起见，让我们假设我们可以非常精确和确定地推杆，但范围有限。 这给了我们图中标有$-2$的尖锐轮廓线；该线和果岭之间的所有位置都需要打两杆才能完成入洞。 类似地，$-2$轮廓线的投放范围内的任何位置必须具有$-3$的值，依此类推，以获得图中所示的所有轮廓线。推杆不会让我们脱离陷阱，所以它们的值为$-\infty$。 总的说，通过推杆，我们需要六杆从球座入洞。
 
-![Figure3.6](D:\trans\rl-intro-book-chinese\chapter3\img\Figure3.6.png)
+![Figure3.6](img\Figure3.6.png)
 
 
 
@@ -311,13 +311,13 @@ $v_\pi(s)\doteq\mathbb{E}_\pi[G_t|S_t=s]\\ \quad\quad=\mathbb{E}_\pi[\sum^{\inft
 
 **练习3.11**状态的值取决于在该状态下可能的动作的值以及当前策略下每个动作的可能性。 我们可以通过根据状态的小型备份图来考虑这一点，并考虑到每个可能的操作：
 
-![exercise3.11](D:\trans\rl-intro-book-chinese\chapter3\img\exercise3.11.png)
+![exercise3.11](img\exercise3.11.png)
 
 根据给定$S_t=s$的预期叶节点$q_\pi(s,a)$的值，给出对根节点$v_\pi(s)$的值的对应于该直觉和图表的方程。 这个方程式应该包含一个符合策略$\pi$条件的预期。 然后给出第二个等式，其中期望值以\ pi（ajs）方式明确地写出，使得等式中不出现预期值符号。然后给出第二个等式，其中期望值以$\pi(a|s)$明确地写出，使得在等式中不出现期望值符号。
 
 **练习3.12**动作值$q_\pi(s,a)$取决于预期的下一个奖励和剩余奖励的预期总和。 再次，我们可以通过一个小的备份图来考虑这一点，这一个根源于一个动作（状态—动作对），并分支到可能的下一个状态：
 
-![exercise3.12](D:\trans\rl-intro-book-chinese\chapter3\img\exercise3.12.png)
+![exercise3.12](img\exercise3.12.png)
 
 给出与这个直觉和图表对应的方程式的动作值$q_\pi(s,a)$，考虑到$St = s$和$A_t= a$，根据预期的下一个奖励$R_{t+1}$和预期的下一个状态值$v_\pi(S_{t+1})$。这个方程式应该包括期望值，但不包括一个条件符合策略条件。 然后给出第二个方程，用（3.6）定义的$p(s^\prime,r|s,a)$明确地写出期望值，使得方程式中不会出现预期值符号。
 
@@ -351,7 +351,7 @@ $q_*(s,a) = \mathbb{E}[R_{t+1}+\gamma\sum_{a^\prime}q_*(S_{t+1,a^\prime})|S_t=s,
 
 ​    对于有限的MDP，贝尔曼最优方程（3.17）具有独立于策略的独特解。贝尔曼最优方程实际上是一个方程组，每个状态一个，所以如果有N个状态，那么在N个未知数中有N个方程。如果环境的动态是已知的$(p(s^\prime,r|s,a))$，则原则上可以使用解决非线性方程组的各种方法中的任何一种来求解该$v_*$方程组。 可以求解$q_*$的一组相关方程。
 
-​                                     ![Figure3.7](D:\trans\rl-intro-book-chinese\chapter3\img\Figure3.7.png)
+​                                     ![Figure3.7](img\Figure3.7.png)
 
 ​                                                                       图3.7：$v_*$和$q_*$的备份图
 
@@ -377,7 +377,7 @@ $v_*(l)=\max \left \{ \begin{aligned}   \beta r_s - 3(1-\beta)+\gamma[(1-\beta)v
 
 **示例3.12：解决网格世界问题**  假设我们为实例3.8中介绍的简单网格任务解决了$v_*$的贝尔曼方程，并再次显示在图3.8（左图）中。 回想一下，状态$A$之后是$+10$的回报并转换到状态$A^\prime$，而状态$B$之后是$+5$的回报并转换到状态$B^\prime$。 图3.8（中间）显示了最优值函数，图3.8（右图）显示了相应的最优策略。 在单元格中有多个箭头的情况下，任何相应的动作都是最佳的。
 
-![figure3.8](D:\trans\rl-intro-book-chinese\chapter3\img\figure3.8.png)
+![figure3.8](img\figure3.8.png)
 
 ​                                                       图3.8：网格世界示例的最佳解决方案。
 
